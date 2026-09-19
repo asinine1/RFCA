@@ -1,0 +1,42 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+sshkey*
+**/sshkey*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Python environments and local caches
+.venv/
+.venv-*/
+venv/
+env/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+.huggingface/
+
+# Downloaded model weights and native model packs
+Models/
+models/
+*.safetensors
+*.safetensors.index.json
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.dgq
+*.dgq.*
+
+# Generated experiments, logs, temporary files, and local OS metadata
+runs/
+tmp/
+*.log
+.DS_Store

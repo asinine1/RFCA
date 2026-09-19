@@ -1,0 +1,13 @@
+{
+  "command": "train",
+  "task": "position_probe",
+  "model_preset": "smoke",
+  "tokenizer": "byte",
+  "prefix_length": 64,
+  "canvas_length": 16,
+  "diffusion_steps": 2,
+  "probe_examples": 2048,
+  "batch_size": 8,
+  "steps": 300,
+  "output_dir": "runs/position-probe"
+}

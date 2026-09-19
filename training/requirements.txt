@@ -1,0 +1,6 @@
+# Install a platform-appropriate PyTorch build first if needed.
+torch>=2.4
+numpy>=1.26
+transformers>=4.55
+accelerate>=1.4
+safetensors>=0.5

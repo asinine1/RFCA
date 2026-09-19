@@ -1,0 +1,16 @@
+{
+  "command": "train",
+  "model_preset": "student-750m",
+  "tokenizer": "google/gemma-4-E2B-it",
+  "data": "path/to/train.jsonl",
+  "prefix_length": 256,
+  "canvas_length": 32,
+  "diffusion_steps": 2,
+  "batch_size": 2,
+  "gradient_accumulation": 8,
+  "steps": 10000,
+  "learning_rate": 0.0003,
+  "precision": "bf16",
+  "gradient_checkpointing": true,
+  "output_dir": "runs/student-750m-2xa100"
+}

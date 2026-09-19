@@ -1,0 +1,15 @@
+{
+  "command": "train",
+  "model_preset": "smoke",
+  "tokenizer": "byte",
+  "data": "synthetic",
+  "prefix_length": 64,
+  "canvas_length": 16,
+  "diffusion_steps": 2,
+  "batch_size": 2,
+  "gradient_accumulation": 1,
+  "steps": 20,
+  "eval_every": 10,
+  "save_every": 20,
+  "output_dir": "runs/smoke"
+}

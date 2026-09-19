@@ -370,3 +370,39 @@ This file is the persistent handoff note for work in this repository. Read it at
   states are now cast only at the float32 student bridge inputs, and the
   adapter path handles both its float32 adapter and bf16 frozen LM head. Local
   compile plus synthetic bf16 forward smoke tests pass for both paths.
+- After pulling the dtype fix, the Runpod process reached `Loading weights:
+  100%` and then showed no further visible output for about five minutes.
+  This may be normal first-step compute plus stdout buffering through `tee`;
+  inspect `nvidia-smi` before stopping it, and use `python -u` on a rerun if
+  live step output is needed.
+- The Runpod web terminal disconnected during the first post-fix training
+  attempt before step 1 completed. The rerun should first fast-forward the
+  checkout to commit `4c07890`, then use `python -u` and `--log-every 1` so
+  startup and completed-step output are visible through `tee`.
+- The unbuffered Runpod rerun reached at least step 53/100 successfully with
+  the 400M full-canvas RFCA student. Loss is noisy but has no NaNs or runtime
+  failures and appears lower on average in the later visible window; defer
+  quality conclusions until the held-out metrics JSON and matched causal
+  control are available.
+- The completed 100-step Runpod RFCA smoke run produced held-out losses
+  `61.92--75.76` and exact accuracies of `1/32` on commits 1--5 and `2/32`
+  on commits 6--8. The evaluation sampled only 32 of 1,337 validation
+  examples, so this confirms end-to-end training/evaluation but does not yet
+  show meaningful RFCA quality or a canvas benefit. Run a matched causal
+  control and a longer, better-sampled comparison before interpreting the
+  result.
+- The matched 100-step no-canvas causal control produced losses
+  `69.69--83.58` and `1/32` accuracy at every commit. Averaged across the
+  eight commits, full RFCA was about `66.60` loss versus `75.90` for causal,
+  winning loss on 7/8 commits; exact accuracy was `11/256` versus `8/256`.
+  This is an encouraging short-run canvas signal, but not conclusive because
+  each commit has only 32 validation examples and the default multinomial
+  theorizer sampling makes the comparison noisy. Repeat with deterministic
+  argmax canvas sampling and a larger evaluation set before claiming a real
+  benefit.
+- Found and fixed an experimental-control gap: `--seed` previously seeded
+  only Python-side example selection, not PyTorch student initialization or
+  random canvas generation. `train()` now seeds PyTorch and CUDA before model
+  construction; `py_compile` and `git diff --check` pass. The existing two
+  short runs remain useful but are not perfectly paired because they predate
+  this fix.

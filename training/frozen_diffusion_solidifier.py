@@ -605,6 +605,9 @@ def probe(args) -> None:
 def train(args) -> None:
     device = choose_device(args.device)
     dtype = choose_dtype(args.dtype, device)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
     theorizer = FrozenDiffusionGemmaTheorizer(
         args.model_id, device, dtype, canvas_length=args.canvas_length
     )

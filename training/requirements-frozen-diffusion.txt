@@ -1,7 +1,7 @@
 # Requirements for training the solidifier against a frozen
 # DiffusionGemmaForBlockDiffusion checkpoint through Transformers.
 # Python 3.10+ is required by the current DiffusionGemma Transformers API.
-torch>=2.8
+torch>=2.5
 transformers>=5.11
 accelerate>=1.4
 safetensors>=0.5

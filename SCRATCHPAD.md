@@ -350,3 +350,7 @@ This file is the persistent handoff note for work in this repository. Read it at
 - Run a short 400M single-device trial with the frozen theorizer before moving
   to the 2xA100 configuration. Do not treat the tiny public checkpoint as the
   quality gate or spend GPU hours until the real theorizer path is available.
+- Lowered `training/requirements-frozen-diffusion.txt`'s PyTorch floor from
+  `>=2.8` to `>=2.5` to match the Transformers requirement and the Runpod
+  CUDA 12.4 environment. The pod still needs an in-place upgrade to the
+  official PyTorch 2.5.1 CUDA 12.4 wheels before running the harness.

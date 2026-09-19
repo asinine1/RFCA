@@ -343,8 +343,10 @@ This file is the persistent handoff note for work in this repository. Read it at
 - Initialized a new Git repository on `main` and added `.gitignore` rules for
   `.env`, virtual environments, SSH/private-key files, model weights, native
   model packs, generated `runs/`, temporary files, and Python caches. Created
-  initial commit `4e9527620e094edaf630165b3d2b611bfdc1a4a0` as
+  initial commit `aa508beff02b4929f6ca45e3f30edabaf9fca5eb` as
   `Asinine <shrim1729@gmail.com>`; the working tree was clean afterward.
+- Added GitHub remote `https://github.com/asinine1/RFCA.git`, pushed `main`, and
+  verified that the local branch tracks `origin/main`.
 - Run a short 400M single-device trial with the frozen theorizer before moving
   to the 2xA100 configuration. Do not treat the tiny public checkpoint as the
   quality gate or spend GPU hours until the real theorizer path is available.

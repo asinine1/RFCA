@@ -364,12 +364,16 @@ class TrainableAutoregressiveSolidifier(nn.Module):
             src_key_padding_mask=~prefix_attention_mask.bool(),
         )
         query = self.prefix_norm(prefix_states[:, -1:, :])
-        query = query + self.frozen_prefix_bridge(frozen_prefix_hidden[:, -1:, :])
+        frozen_prefix_input = frozen_prefix_hidden[:, -1:, :].to(
+            dtype=self.frozen_prefix_bridge.weight.dtype
+        )
+        query = query + self.frozen_prefix_bridge(frozen_prefix_input)
         if self.canvas_mode == "full":
             canvas_positions = torch.arange(
                 canvas_hidden.shape[1], device=canvas_hidden.device
             )
-            canvas = self.canvas_bridge(canvas_hidden)
+            canvas_input = canvas_hidden.to(dtype=self.canvas_bridge.weight.dtype)
+            canvas = self.canvas_bridge(canvas_input)
             canvas = canvas + self.canvas_position_embedding(canvas_positions)[None, :, :]
             canvas = self.canvas_norm(canvas)
             canvas_update, _ = self.canvas_cross_attention(
@@ -403,9 +407,14 @@ class FrozenCanvasSolidifier(nn.Module):
 
     def forward(self, prefix_hidden: torch.Tensor, canvas_hidden: torch.Tensor) -> torch.Tensor:
         query = prefix_hidden[:, -1:, :]
-        canvas_update = self.canvas_adapter(query, canvas_hidden)
-        fused = self.norm(query + self.gate * canvas_update)
-        return self.lm_head(fused[:, 0, :])
+        adapter_dtype = self.canvas_adapter.query.weight.dtype
+        canvas_update = self.canvas_adapter(
+            query.to(dtype=adapter_dtype),
+            canvas_hidden.to(dtype=adapter_dtype),
+        )
+        fused = self.norm(query.to(dtype=adapter_dtype) + self.gate * canvas_update)
+        lm_head_dtype = next(self.lm_head.parameters()).dtype
+        return self.lm_head(fused[:, 0, :].to(dtype=lm_head_dtype))
 
     def trainable_state_dict(self) -> dict[str, torch.Tensor]:
         """Return only adapter weights, never a second copy of the frozen LM head."""

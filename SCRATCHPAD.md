@@ -354,3 +354,19 @@ This file is the persistent handoff note for work in this repository. Read it at
   `>=2.8` to `>=2.5` to match the Transformers requirement and the Runpod
   CUDA 12.4 environment. The pod still needs an in-place upgrade to the
   official PyTorch 2.5.1 CUDA 12.4 wheels before running the harness.
+- Runpod PyTorch upgrade is currently in pip's uninstall/reinstall phase at
+  `2/26 [sympy]`; no failure has appeared yet. Wait for completion, then
+  verify the active venv reports PyTorch `2.5.1+cu124` and CUDA availability.
+- The first Runpod 400M frozen-theorizer launch loaded all 1,047 checkpoint
+  shards and instantiated the full-canvas 293,270,017-parameter solidifier,
+  but did not train: `tee` targeted missing `/workspace/runs`, and the data
+  path used uppercase `/workspace/ISEF2027` while the checkout is lowercase
+  `/workspace/isef2027`. Correct both paths before rerunning.
+- Prepared the corrected short RFCA launch using `/workspace/isef2027`,
+  `/workspace/runs`, and the mounted DiffusionGemma model path; this should be
+  the first actual training attempt after the path fix.
+- Fixed the frozen-to-trainable dtype boundary in
+  `training/frozen_diffusion_solidifier.py`: DiffusionGemma bf16 prefix/canvas
+  states are now cast only at the float32 student bridge inputs, and the
+  adapter path handles both its float32 adapter and bf16 frozen LM head. Local
+  compile plus synthetic bf16 forward smoke tests pass for both paths.

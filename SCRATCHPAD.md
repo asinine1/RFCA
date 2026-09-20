@@ -406,3 +406,11 @@ This file is the persistent handoff note for work in this repository. Read it at
   construction; `py_compile` and `git diff --check` pass. The existing two
   short runs remain useful but are not perfectly paired because they predate
   this fix.
+- User is stopping the Runpod pod overnight. The checkpoint, repository, and
+  outputs are under `/workspace`; confirm the pod uses a persistent network
+  volume before stopping, and use Stop rather than Terminate when possible.
+  Runpod's current docs say network-volume data can be reattached to a new
+  pod if termination becomes necessary.
+- On 2026-09-19, provided a project handoff summary. The repository is on
+  `main` at `ebc68aa` with the reproducibility fix; the working tree only
+  contains the ongoing scratchpad update.

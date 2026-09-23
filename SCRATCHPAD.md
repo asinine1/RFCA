@@ -414,3 +414,93 @@ This file is the persistent handoff note for work in this repository. Read it at
 - On 2026-09-19, provided a project handoff summary. The repository is on
   `main` at `ebc68aa` with the reproducibility fix; the working tree only
   contains the ongoing scratchpad update.
+- Created `PHASE1.md` to consolidate the full Phase 1 record: architecture and
+  terminology, rejected/accepted design decisions, all local and frozen-model
+  experiments, Runpod setup and failures, quantitative results, external
+  novelty/competition review, supported versus unsupported claims, and the
+  randomized-index benchmark proposed as the next gate.
+
+## Work completed in this turn (2026-09-19/20)
+
+- Read the scratchpad and reviewed the active RFCA direction, rules baseline,
+  architecture design, and quality benchmark before researching externally.
+- Ran four parallel Luna XHigh research passes covering the academic research
+  frontier, DMRSEF/CSEF/ISEF competition records, public project media and
+  judge communication, and a skeptical red-team review. Agents were closed
+  after returning their findings.
+- Verified primary/official sources for DiffusionGemma, TiDAR, Block
+  Diffusion, DiffCoT, Deferred Commitment Decoding, LLaDA, ISEF judging and
+  rules, DMRSEF 2027 dates/forms status, CSEF results/criteria, and official
+  ISEF project/award records.
+- Main external conclusion: broad diffusion-plus-autoregression novelty is
+  low; the defensible gap is a matched-budget study of a position-aware,
+  imperfect, rolling full canvas and a causal one-token solidifier.
+- Main competition conclusion: DMRSEF entry is viable if narrowed and clearly
+  demonstrated; CSEF is conditional on a decisive held-out mechanism result;
+  ISEF finalist is plausible only after stronger evidence; ISEF Grand-level
+  evidence is not present yet.
+- Added the detailed research record at
+  `project context/09_external_viability_review_2026-09-19.md` and linked it
+  from `project context/README.md`.
+- The recommended next experiment is a randomized-index future-canvas
+  retrieval benchmark with full, no-canvas, pooled, slot-preserving shuffled,
+  and first-position controls, at least three seeds, deterministic primary
+  decoding, and explicit compute/latency accounting. Real-text quality should
+  remain a secondary transfer check until this gate passes.
+- Verification: `git diff --check` passed. No training or external state was
+  changed; the only repository changes were the new viability review, its
+  README link, and this scratchpad record.
+- On 2026-09-19, completed a read-only media and judge-communication review of
+  publicly inspectable DMRSEF, CSEF, and ISEF project pages, abstracts, decks,
+  videos, award pages, and display/judging rules. Three parallel Luna XHigh
+  analyses were used for regional-fair, ISEF, and cross-level comparisons.
+  Main conclusion: RFCA is explainable as a causal state-management study if
+  the media makes the provisional canvas, hard commitment boundary, rolling
+  update, matched controls, compute cost, and student ownership visible in the
+  first minute. Do not claim general-language or ISEF-Grand-level quality
+  until the unresolved frozen-theorizer, real-text, leakage, and
+  compute-normalized results are complete. No project files were edited; the
+  only file changed this turn is this required scratchpad entry.
+- On 2026-09-19, completed an independent primary-source research-landscape
+  audit for RFCA using three parallel Luna XHigh passes: literature, fair
+  projects, and adversarial novelty review. Reviewed 15 close/adjacent works
+  including DiffusionGemma, TiDAR, Block Diffusion, SDLM, CARD, deferred
+  commitment, DiffCoT, Diffuse Thinking, speculative diffusion/correction,
+  Diffusion Forcing, Self Forcing, Future Summary Prediction, and Dream. Also
+  reviewed official DMRSEF, CSEF, ISEF abstracts, award pages, and judging
+  criteria. Conclusion: broad claims such as first diffusion-AR hybrid,
+  first future canvas, first deferred commitment, or first imperfect-state
+  curriculum are unsafe. The strongest defensible gap is a matched-parameter,
+  matched-FLOP/latency study of whether an imperfect, position-aware,
+  model-generated rolling bidirectional future improves a separate causal
+  one-token decision on dependency-sensitive long-horizon tasks. This is an
+  empirical-gap claim, not a priority claim. No project files were edited;
+  only this required scratchpad record was updated.
+- Fetched and followed the official Runpod agent setup document at
+  `https://docs.runpod.io/agent-setup.md`. Added the `runpod` marketplace,
+  installed and enabled `runpod@runpod` version `1.2.0`, and verified all eight
+  bundled skill files (`runpod`, `runpod-mcp`, `runpodctl`, `flash`,
+  `runpod-usage`, `companion-clis`, `runpod-templates`, and `runpod-migrate`)
+  under `/Users/shrim1729/.codex/plugins/cache/runpod/runpod/1.2.0/`.
+  Registered the hosted MCP endpoint at `https://mcp.getrunpod.io/` and
+  completed its OAuth login; `codex mcp list` reports it enabled with OAuth.
+  Codex may need a reload or new turn before the newly installed skills are
+  available to the active conversation. No Runpod pod or paid resource was
+  created.
+
+## Work completed in this turn (2026-09-22)
+
+- Read the scratchpad and checked the current repository status, recent commit,
+  project file inventory, latest external viability review, and available run
+  artifacts before briefing project state.
+- No implementation or experiment files were changed in this turn. The
+  working tree remains intentionally uncommitted with the viability review,
+  its project-context README link, and this scratchpad update.
+- Current brief: the RFCA/frozen-DiffusionGemma pipeline is operational;
+  teacher-forced rolling-curriculum retention is the strongest positive result;
+  general quality and slot-specific future-canvas benefit remain unproven.
+- Current next gate remains the randomized-index future-canvas benchmark with
+  matched controls, multiple seeds, deterministic primary decoding, held-out
+  examples, and compute/latency accounting before further GPU scaling.
+- Verification: `git status`, recent commit history, file inventory, and the
+  external viability review were inspected; no new training was run.
